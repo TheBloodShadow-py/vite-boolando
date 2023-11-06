@@ -71,3 +71,55 @@ img {
 .flex {
   display: flex;
 }
+
+/* MEDIA */
+
+@media screen and (max-width: 767px) {
+  .col-4 {
+    width: calc(((100% / 12) * 6) - 15px);
+  }
+  header {
+    font-size: 18px;
+  }
+  footer {
+    font-size: 11px;
+  }
+
+  .footer-section {
+    gap: 10px;
+  }
+
+  .socials-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .col-4 {
+    width: calc(((100% / 12) * 12) - 15px);
+  }
+  header {
+    font-size: 15px;
+    padding: 20px;
+    justify-content: space-between;
+  }
+
+  header .types {
+    display: none !important;
+  }
+  footer {
+    font-size: 11px;
+  }
+
+  .footer-section {
+    gap: 10px;
+  }
+
+  .socials-container {
+    display: none;
+  }
+
+  .row {
+    justify-content: center;
+  }
+}

@@ -1,6 +1,7 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import Cards from "./components/Cards.vue";
+import Footer from "./components/Footer.vue";
 export default {
   data() {
     return {};
@@ -8,6 +9,7 @@ export default {
   components: {
     NavBar,
     Cards,
+    Footer,
   },
 };
 </script>
@@ -15,4 +17,5 @@ export default {
 <template>
   <NavBar />
   <Cards />
+  <Footer />
 </template>
