@@ -10,12 +10,63 @@ export default {
           fullPrice: "29,99",
           eco: true,
           discount: "50%",
-          img: "../assets/1.webp",
-          hoverImg: "/assets/1b.webp",
+          img: "/products/1.webp",
+          hoverImg: "/products/1b.webp",
+        },
+        {
+          name: "ROSES TEE",
+          brand: "Guess",
+          price: "20,99",
+          fullPrice: "29,99",
+          eco: false,
+          discount: "30%",
+          img: "/products/2.webp",
+          hoverImg: "/products/2b.webp",
+        },
+        {
+          name: "VOGLIA DI COLORI PASTELLO",
+          brand: "Come Zucchero Filato",
+          price: "129,99",
+          fullPrice: "184,99",
+          eco: false,
+          discount: "30%",
+          img: "/products/3.webp",
+          hoverImg: "/products/3b.webp",
+        },
+        {
+          name: "TEE UNISEX",
+          brand: "Levi's",
+          price: "14,99",
+          fullPrice: "29,99",
+          eco: true,
+          discount: "50%",
+          img: "/products/4.webp",
+          hoverImg: "/products/4b.webp",
+        },
+        {
+          name: "STRIPE BODICE",
+          brand: "Maya Deluxe",
+          price: "99,99",
+          fullPrice: "",
+          eco: false,
+          discount: "",
+          img: "/products/5.webp",
+          hoverImg: "/products/5b.webp",
+        },
+        {
+          name: "MAGLIONE - BLACK-",
+          brand: "Esprint",
+          price: "29,99",
+          fullPrice: "",
+          eco: false,
+          discount: "",
+          img: "/products/6.webp",
+          hoverImg: "/products/6b.webp",
         },
       ],
     };
   },
+  methods: {},
 };
 </script>
 
@@ -27,7 +78,7 @@ export default {
           <figure class="relative">
             <img class="primary-img" :src="product.img" :alt="product.name" />
             <img class="hover-img" :src="product.hoverImg" :alt="product.name" />
-            <span class="discont-amount">{{ product.discount }}</span>
+            <span v-if="!(product.discount == '')" class="discont-amount">{{ product.discount }}</span>
             <span class="eco-friendly" v-if="product.eco">Sostenibilità</span>
             <span class="add-favorite">&hearts;</span>
           </figure>
@@ -36,7 +87,7 @@ export default {
             <strong class="product-name">{{ product.name }}</strong>
             <div class="prices">
               <span class="disconted-price">{{ product.price }}&euro;</span>
-              <span class="original-price">{{ product.fullPrice }} &euro;</span>
+              <span v-if="!(product.discount === '')" class="original-price">{{ product.fullPrice }} &euro;</span>
             </div>
           </div>
         </div>
@@ -66,6 +117,7 @@ export default {
 .disconted-price {
   color: $price-color;
   font-size: 15px;
+  margin-right: 10px;
 }
 
 main img {
@@ -126,9 +178,9 @@ main img {
   font-size: 25px;
   z-index: 3;
   line-height: 1;
-}
-
-.add-favorite:hover {
-  color: red;
+  transition: 0.3s linear all;
+  &:hover {
+    color: red;
+  }
 }
 </style>

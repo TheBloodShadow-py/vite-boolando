@@ -18,9 +18,9 @@ export default {
     </ul>
     <img class="logo" alt="logo" :src="logo" />
     <ul>
-      <li><img src="../assets/profile.svg" alt="profile icon" /></li>
-      <li><img src="../assets/heart.svg" alt="heart icon" /></li>
-      <li><img src="../assets/shopping-cart.svg" alt="shopping cart icon" /></li>
+      <li><img src="/profile.svg" alt="profile icon" /></li>
+      <li><img src="/heart.svg" alt="heart icon" /></li>
+      <li><img src="/shopping-cart.svg" alt="shopping cart icon" /></li>
     </ul>
   </header>
 </template>
