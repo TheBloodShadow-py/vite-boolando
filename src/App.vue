@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       ProductsDb: ProductsDb.products,
+      loader: true,
     };
   },
   components: {
@@ -18,13 +19,17 @@ export default {
     Footer,
     CardsSkeleton,
   },
+  created() {
+    setTimeout(() => {
+      this.loader = false;
+    }, 2500);
+  },
 };
 </script>
 
 <template>
   <NavBar />
-  <!-- <CardsSkeleton /> -->
-
-  <Cards :products="ProductsDb" />
+  <CardsSkeleton v-if="loader" />
+  <Cards v-show="!loader" :products="ProductsDb" />
   <Footer />
 </template>

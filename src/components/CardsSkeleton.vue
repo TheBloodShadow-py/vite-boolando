@@ -7,50 +7,65 @@ export default {
 </script>
 
 <template>
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="col-4 padding-10 pointer">
-          <figure class="relative">
-            <img draggable="false" class="primary-img" />
-            <img draggable="false" class="hover-img" />
-          </figure>
-          <div class="flex-column">
-            <span class="product-brand-name">Test</span>
-            <strong class="product-name">Test</strong>
-            <div class="prices">
-              <span class="disconted-price">Test&euro;</span>
-              <span>Test</span>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-4 padding-10 pointer" v-for="x in 6">
+        <div class="relative box"></div>
+        <div class="flex-column">
+          <span class="product-brand-name"></span>
+          <strong class="product-name"></strong>
+          <div class="prices">
+            <span class="disconted-price"></span>
+            <span></span>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 @import "../partials/_varibles.scss";
 
+.box {
+  background-color: $skeleton-color;
+  height: 500px;
+  border-radius: 15px;
+  animation: pulse linear alternate-reverse infinite 1.4s;
+}
+
 .product-brand-name {
-  font-size: 14px;
-  color: $product-brand-name-color;
+  background-color: $skeleton-color;
+  width: 50px;
+  height: 20px;
+  border-radius: 8px;
+  animation: pulse linear alternate-reverse infinite 1.4s;
 }
 
 .product-name {
-  font-weight: bold;
-  font-size: 18px;
+  background-color: $skeleton-color;
+  width: 100px;
+  height: 20px;
+  border-radius: 8px;
+  margin-top: 5px;
+  animation: pulse linear alternate-reverse infinite 1.4s;
 }
 
-.original-price {
-  text-decoration: line-through rgb(94, 94, 94) 2px;
-  font-size: 16px;
+.prices {
+  background-color: $skeleton-color;
+  width: 60px;
+  height: 20px;
+  border-radius: 8px;
+  margin-top: 5px;
+  animation: pulse linear alternate-reverse infinite 1.4s;
 }
 
 .disconted-price {
-  color: $price-color;
-  font-size: 15px;
-  margin-right: 10px;
+  background-color: $skeleton-color;
+  width: 50px;
+  height: 20px;
+  border-radius: 8px;
+  animation: pulse linear alternate-reverse infinite 1.4s;
 }
 
 main img {
@@ -63,10 +78,6 @@ main img {
   left: 0;
   z-index: -1;
   opacity: 0;
-}
-
-.primary-img {
-  z-index: 1;
 }
 
 .col-4:hover .hover-img {
@@ -126,5 +137,14 @@ main img {
 
 .red {
   color: red;
+}
+
+@keyframes pulse {
+  from {
+    background-color: $product-brand-name-color;
+  }
+  to {
+    background-color: rgba(122, 122, 122, 0.973);
+  }
 }
 </style>
