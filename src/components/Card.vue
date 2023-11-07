@@ -7,12 +7,36 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      discount: 0,
+      fullPrice: 0,
+    };
+  },
+  mounted() {
+    const discounts = this.product.badges.filter((badge) => badge.type === "discount");
+    if (discounts.length) {
+      this.discount = parseInt(discounts[0].value);
+    }
+
+    this.fullPrice = Math.round(
+      (this.product.price * 100) /
+        (100 - parseInt(this.product.badges.filter((elem) => elem.type === "discount").map((elem) => elem.value.replace(/[^0-9%]/g, ""))))
+    );
+  },
   methods: {
     changeFavorite: function () {
       if (this.product.isInFavorites) {
         this.product.isInFavorites = false;
       } else {
         this.product.isInFavorites = true;
+      }
+    },
+    haveBadge: function (currentType) {
+      if (this.product.badges.filter((elem) => elem.type === currentType).length > 0) {
+        return true;
+      } else {
+        return false;
       }
     },
   },
@@ -24,18 +48,8 @@ export default {
     <figure class="relative">
       <img draggable="false" class="primary-img" :src="'products/' + product.frontImage" :alt="product.name" />
       <img draggable="false" class="hover-img" :src="'products/' + product.backImage" :alt="product.name" />
-      <span v-if="product.badges.filter((elem) => elem.type === 'discount').length > 0" class="discont-amount">{{
-        product.badges
-          .filter((elem) => elem.type === "discount")
-          .map((elem) => elem.value)
-          .join("")
-      }}</span>
-      <span
-        class="eco-friendly"
-        :class="product.badges.filter((elem) => elem.type === 'discount').length > 0 ? 'left-55' : 'left-0'"
-        v-if="product.badges.filter((elem) => elem.type === 'tag').length > 0"
-        >Sostenibilità</span
-      >
+      <span v-if="haveBadge('discount')" class="discont-amount">{{ discount + "%" }}</span>
+      <span class="eco-friendly" :class="haveBadge('discount') ? 'left-55' : 'left-0'" v-if="haveBadge('tag')">Sostenibilità</span>
       <span @click="changeFavorite(index)" class="add-favorite" :class="product.isInFavorites ? 'red' : ''">&hearts;</span>
     </figure>
     <div class="flex-column">
@@ -43,15 +57,7 @@ export default {
       <strong class="product-name">{{ product.name }}</strong>
       <div class="prices">
         <span class="disconted-price">{{ product.price }}&euro;</span>
-        <span v-if="product.badges.filter((elem) => elem.type === 'discount').length > 0" class="original-price"
-          >{{
-            Math.round(
-              (product.price * 100) /
-                (100 - parseInt(product.badges.filter((elem) => elem.type === "discount").map((elem) => elem.value.replace(/[^0-9%]/g, ""))))
-            )
-          }}
-          &euro;</span
-        >
+        <span v-if="haveBadge('discount')" class="original-price">{{ fullPrice }} &euro;</span>
       </div>
     </div>
   </div>
