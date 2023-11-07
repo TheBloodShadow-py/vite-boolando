@@ -22,7 +22,7 @@ export default {
   created() {
     setTimeout(() => {
       this.loader = false;
-    }, 2500);
+    }, 2000);
   },
 };
 </script>

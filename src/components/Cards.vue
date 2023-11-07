@@ -50,7 +50,7 @@ export default {
                 >{{
                   Math.round(
                     (product.price * 100) /
-                      parseInt(product.badges.filter((elem) => elem.type === "discount").map((elem) => elem.value.replace(/[^0-9%]/g, "")))
+                      (100 - parseInt(product.badges.filter((elem) => elem.type === "discount").map((elem) => elem.value.replace(/[^0-9%]/g, ""))))
                   )
                 }}
                 &euro;</span
