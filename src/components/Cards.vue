@@ -1,6 +1,4 @@
 <script>
-import { toValue } from "vue";
-
 export default {
   props: {
     products: {
