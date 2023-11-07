@@ -1,10 +1,12 @@
 <script>
-import logo from "/boolean-logo.png";
 export default {
   data() {
-    return {
-      logo,
-    };
+    return {};
+  },
+  methods: {
+    // getImgUrl: function (url) {
+    //   return new URL(url, import.meta.url).href;
+    // },
   },
 };
 </script>
@@ -16,7 +18,8 @@ export default {
       <li>Uomo</li>
       <li>Bambini</li>
     </ul>
-    <img class="logo" alt="logo" :src="logo" />
+    <!-- <img class="logo" alt="logo" :src="getImgUrl('../assets/boolean-logo.png')" /> -->
+    <img class="logo" alt="logo" src="/boolean-logo.png" />
     <ul>
       <li><img src="/profile.svg" alt="profile icon" /></li>
       <li><img src="/heart.svg" alt="heart icon" /></li>
