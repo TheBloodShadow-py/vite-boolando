@@ -50,7 +50,9 @@ export default {
       <img draggable="false" class="hover-img" :src="'products/' + product.backImage" :alt="product.name" />
       <span v-if="haveBadge('discount')" class="discont-amount">{{ discount + "%" }}</span>
       <span class="eco-friendly" :class="haveBadge('discount') ? 'left-55' : 'left-0'" v-if="haveBadge('tag')">Sostenibilità</span>
-      <span @click="changeFavorite(index)" class="add-favorite" :class="product.isInFavorites ? 'red' : ''">&hearts;</span>
+      <span @click="changeFavorite(index)" class="add-favorite" :class="product.isInFavorites ? 'red' : ''"
+        ><font-awesome-icon class="icon" :icon="['fas', 'heart']"
+      /></span>
     </figure>
     <div class="flex-column">
       <span class="product-brand-name">{{ product.brand }}</span>
@@ -69,6 +71,10 @@ export default {
 .product-brand-name {
   font-size: 14px;
   color: $product-brand-name-color;
+}
+
+.icon {
+  font-size: 16px;
 }
 
 .product-name {
@@ -136,12 +142,11 @@ main img {
 
 .add-favorite {
   background-color: white;
-  padding: 4px 5px;
-  border-radius: 3-px;
+  padding: 8px 8px;
+  border-radius: 3px;
   position: absolute;
-  right: 0px;
+  right: -1px;
   top: 15px;
-  font-size: 25px;
   z-index: 3;
   line-height: 1;
   transition: 0.15s linear all;

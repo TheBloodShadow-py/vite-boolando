@@ -21,9 +21,9 @@ export default {
     <!-- <img class="logo" alt="logo" :src="getImgUrl('../assets/boolean-logo.png')" /> -->
     <img class="logo" alt="logo" src="/boolean-logo.png" />
     <ul>
-      <li><img src="/profile.svg" alt="profile icon" /></li>
-      <li><img src="/heart.svg" alt="heart icon" /></li>
-      <li><img src="/shopping-cart.svg" alt="shopping cart icon" /></li>
+      <li><font-awesome-icon :icon="['far', 'user']" /></li>
+      <li><font-awesome-icon :icon="['far', 'heart']" /></li>
+      <li><font-awesome-icon :icon="['fas', 'cart-arrow-down']" /></li>
     </ul>
   </header>
 </template>

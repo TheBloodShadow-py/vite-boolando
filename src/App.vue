@@ -3,14 +3,16 @@ import NavBar from "./components/NavBar.vue";
 import Cards from "./components/Cards.vue";
 import Footer from "./components/Footer.vue";
 
-import ProductsDb from "./json/db.json";
+import { store } from "./store";
+import axios from "axios";
+
 import CardsSkeleton from "./components/CardsSkeleton.vue";
 
 export default {
   data() {
     return {
-      ProductsDb: ProductsDb.products,
       loader: true,
+      productsDB: store.products,
     };
   },
   components: {
@@ -20,6 +22,7 @@ export default {
     CardsSkeleton,
   },
   created() {
+    axios.get("http://localhost:3000/products/").then((resp) => (this.productsDB = resp.data));
     setTimeout(() => {
       this.loader = false;
     }, 2000);
@@ -30,6 +33,6 @@ export default {
 <template>
   <NavBar />
   <CardsSkeleton v-if="loader" />
-  <Cards v-show="!loader" :products="ProductsDb" />
+  <Cards v-show="!loader" :products="productsDB" />
   <Footer />
 </template>

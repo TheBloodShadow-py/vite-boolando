@@ -29,7 +29,7 @@ export default {
 
 .box {
   background-color: $skeleton-color;
-  height: 400px;
+  height: 450px;
   border-radius: 15px;
   animation: pulse linear alternate-reverse infinite 1.4s;
 }
