@@ -56,7 +56,7 @@ export default {
     </figure>
     <div class="flex-column">
       <span class="product-brand-name">{{ product.brand }}</span>
-      <strong class="product-name">{{ product.name }}</strong>
+      <strong class="product-name" @click="$emit('modalShow', product)">{{ product.name }}</strong>
       <div class="prices">
         <span class="disconted-price">{{ product.price }}&euro;</span>
         <span v-if="haveBadge('discount')" class="original-price">{{ fullPrice }} &euro;</span>
